@@ -12,6 +12,7 @@ extern int miCharacterIndex;
 extern NSMutableArray *maNames;
 extern NSMutableArray *maAges;
 extern NSMutableArray *maImgs;
+extern NSMutableArray *maDescription;
 
 @interface Declarations : NSObject
 

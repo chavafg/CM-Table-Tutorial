@@ -12,6 +12,7 @@ int miCharacterIndex = 0;
 NSMutableArray *maNames;
 NSMutableArray *maAges;
 NSMutableArray *maImgs;
+NSMutableArray *maDescription;
 
 @implementation Declarations
 

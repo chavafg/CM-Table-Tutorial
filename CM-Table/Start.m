@@ -10,6 +10,7 @@
 #import "cellSimpsons.h"
 #import "CharacterDetails.h"
 #import "Declarations.h"
+#import "AddCharacter.h"
 
 @interface Start ()
 
@@ -31,9 +32,21 @@
 //-------------------------------------------------------------------------------
 -(void)initController {
    //Initialize arrays
-    maNames         = [[NSMutableArray alloc] initWithObjects: @"Bart Simpson", @"Lisa Simpson", @"Homer Simpson", @"Marge Simpson", @"Maggie Simpson", nil];
-    maAges          = [[NSMutableArray alloc] initWithObjects: @"10", @"8", @"40", @"38", @"1", nil];
-    maImgs          = [[NSMutableArray alloc] initWithObjects: @"bart.png", @"lisa.png", @"homer.png", @"marge.png", @"maggie.png", nil];
+    if (!maNames || !maNames.count) {
+        
+    
+    maNames         = [[NSMutableArray alloc] initWithObjects: @"Eddard Start", @"Catelyn Stark", @"Sansa Stark", @"Arya Stark", @"Robb Stark", nil];
+    maAges          = [[NSMutableArray alloc] initWithObjects: @"35", @"30", @"11", @"9", @"14", nil];
+    maImgs          = [[NSMutableArray alloc] initWithObjects: @"eddard.png", @"catelyn.png", @"sansa.png", @"arya.png", @"robb.png", nil];
+    maDescription   = [[NSMutableArray alloc] initWithObjects:
+                       @"Eddard Start\n Lord of winterfell",
+                       @"Catelyn Stark\n lalalalalala",
+                       @"Sansa Stark\n lallalala",
+                       @"Arya Stark\n lalalalal",
+                       @"Robb Stark\n King of the north", nil];
+    
+    }
+    
 }
 /**********************************************************************************************/
 #pragma mark - Table source and delegate methods
@@ -62,6 +75,7 @@
         [tableView registerNib:[UINib nibWithNibName:@"cellSimpsons" bundle:nil] forCellReuseIdentifier:@"cellSimpsons"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"cellSimpsons"];
     }
+    
     //Fill cell with info from arrays
     cell.lblName.text   = maNames[indexPath.row];
     cell.lblAge.text    = maAges[indexPath.row];
@@ -72,32 +86,14 @@
 //-------------------------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     miCharacterIndex = (int)indexPath.row;
     CharacterDetails *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CharacterDetails"];
-    
     [self presentViewController:viewController animated:YES completion:nil];
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- (IBAction)addBtnPressed:(id)sender {
+    AddCharacter *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AddCharacter"];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
 @end

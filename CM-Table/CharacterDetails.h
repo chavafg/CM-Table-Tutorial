@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imgUser;
 //Labels
 @property (strong, nonatomic) IBOutlet UILabel *lblName;
+@property (strong, nonatomic) IBOutlet UILabel *lblDescr;
+
 
 //Actions
 - (IBAction)btnBackPressed:(id)sender;
